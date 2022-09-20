@@ -15,7 +15,7 @@ print("Iniciando....")
 # Streamlit
 st.set_page_config(
     page_title="DPT-2: Modelo de Lenguaje GPT-2 aplicado la generación de texto de discursos políticos.",
-    page_icon="🎈",
+    page_icon="",
 )
 
 
@@ -59,14 +59,14 @@ model_diputados.eval();
 model_diputados.to(device);
 
 st.write("""
-# My First App
-Hello *world!*
+# DPT-2: Modelo de Lenguaje GPT-2 aplicado la generación de texto de discursos políticos.
+Digite las primeras dos oraciones de un discurso y observe como el modelo le genera el resto del discurso.
 """)
 
 st.markdown("## **📌 Paste document **")
 with st.form(key="my_form"):
     doc = st.text_area(
-        "Paste your text below (max 500 words)",
+        "Digite las primeras dos oraciones de un discurso y observe como el modelo le genera el resto del discurso. (max 500 palabras)",
         height=510,
     )
     MAX_WORDS = 500
