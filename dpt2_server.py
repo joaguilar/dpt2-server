@@ -10,6 +10,8 @@ from transformers import GPT2TokenizerFast, GPT2LMHeadModel
 from tokenizers import ByteLevelBPETokenizer
 logging.set_verbosity_warning()
 
+print("Iniciando....")
+
 # Streamlit
 st.set_page_config(
     page_title="DPT-2: Modelo de Lenguaje GPT-2 aplicado la generación de texto de discursos políticos.",
@@ -41,7 +43,7 @@ if (torch.backends.mps.is_available()):
 if (torch.cuda.is_available()):
     # print('CUDA: ' + str(torch.cuda.is_available()))
     device = 'cuda'
-# print('Using device: '+device)
+print('Using device: '+device)
 
 # model_diputados = torch.load('./model/gpt2-small-diputados/pytorch_model.bin')
 model_diputados = GPT2LMHeadModel.from_pretrained('./model/gpt2-small-diputados')
@@ -89,7 +91,7 @@ if not submit_button:
 
 # text = 'En las últimas semanas hemos visitado varias zonas de Cartago y hemos visto el lamentable, por no decir vergonzoso, estado de las carreteras. Hablo de gente que debe lidiar con presas eternas, agricultores que se juegan la vida para sacar sus productos, de niños que no pueden llegar a tiempo a sus escuelas. Hablo de personas que se sienten olvidadas por sus gobiernos desde hace muchos años atrás.'
 input_ids = tokenizer_diputados.encode(text, return_tensors="pt").to(device)
-# print(input_ids.shape)
+print(input_ids.shape)
 max_length = input_ids.shape[1]
 flat_input_ids = torch.flatten(input_ids,start_dim = 1)
 # print(flat_input_ids.shape)
@@ -116,7 +118,7 @@ for i, sample_output in enumerate(textos):
             "Discurso":salida_texto
         }
     )
-    # print(">> Generated text {}\n\n{}".format(i+1, salida_texto))
+    print(">> Generated text {}\n\n{}".format(i+1, salida_texto))
     # seq = random.randint(0,100000)
 #     with open('/content/textos/ejemplo_diputado_'+str(seq)+'.txt','w') as f:
 #       f.write(salida_texto)
