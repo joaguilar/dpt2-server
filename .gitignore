@@ -162,3 +162,5 @@ cython_debug/
 
 activate.sh
 deactivate.sh
+dpt2_server_env/**
+.DS_Store

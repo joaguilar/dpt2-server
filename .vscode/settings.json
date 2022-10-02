@@ -1,0 +1,5 @@
+{
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.defaultInterpreterPath": "/Users/joseaguilar/Documents/Development/dpt2/dpt2_server_env/bin/python"
+  }
